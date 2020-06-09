@@ -12,7 +12,18 @@ How to use.
 
 There are 2 main features of the tool.
 1. #require a b c ... (adds content and all the dependencies of a.h , b.h , c.h , ....) , you can write these lines arbitary number of times, anywhere in code.
+ (Examples)
+```c++
+#require MOD mi
+#require INF N kmp
+#require love
+```
 2. #author x y x ... (add that line as a comment on the top of the code. Just a cute little feature :p).You can write these lines arbitary number of times, anywhere in code.
+```c++
+#author I dont give no f*ck what you write here, it is just an expmple
+#author This problem seems hard, then it doesn't, but it really is. 
+#author awesome video :) (https://www.youtube.com/watch?v=M64HUIJFTZM) 
+```
 
 No need to write "#include" or "using namespace std" anywhere , neighther in libraries not in main.template code.
 
