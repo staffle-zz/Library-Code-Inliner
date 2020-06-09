@@ -17,9 +17,10 @@ There are 2 main features of the tool.
 No need to write "#include" or "using namespace std" anywhere , neighther in libraries not in main.template code.
 
 A typical library code will look something like this :
-"""" (Example for lcm.h)
+ (Example for lcm.h) 
+'''c++
 #require ll gcd
 ll lcm(ll a , ll b){
   return a/gcd(a,b)*b;
 }
-""""
+'''
