@@ -36,3 +36,4 @@ ll lcm(ll a , ll b){
   return a/gcd(a,b)*b;
 }
 ```
+In one piece of library code you can directly refer to another library code. without worrying about dependecies. (like i referred to gcd.h in lcm without writing the gcd function itself.)
