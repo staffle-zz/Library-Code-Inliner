@@ -1,5 +1,5 @@
 # Library-Code-Inliner
-This is a tool that automatically fetch all the required code in a cpp file with all of its dependencies while you have a well maintained library of codes. See readme.md file for details about library.
+This is a tool that automatically fetch all the required code in a cpp file with all of its dependencies given you have a little bit maintained library of codes. See readme.md file for details about library.
 
 How to use.
 1. copy the content of repository into a folder. (aka "Working_folder") (Suggestion : make a new one, dont change your current working folder.)
