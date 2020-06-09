@@ -1,0 +1,5 @@
+{
+	"shell_cmd": "./Build/tool < \"${file}\" > submit.cpp && g++ -o run submit.cpp -Wall -std=c++17 && ./run < io/in > io/out",
+	"file_regex": "^(...*?):([0-9]*):?([0-9]*)",
+	"file_patterns": ["*.template"]
+}
