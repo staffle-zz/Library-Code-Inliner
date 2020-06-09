@@ -121,8 +121,9 @@ int main() {
 			if(i!=n-1 and authcmt[i]!="\n") cout << " ";
 			if(authcmt[i]=="\n" and i!=n-1) addtab = true;
 		}
+		cout << "*/\n";
 	}
-	cout << "*/\n";
+	
 	cout << "#include \"bits/stdc++.h\"" << endl;
 	cout << "using namespace std;" << endl;
 
