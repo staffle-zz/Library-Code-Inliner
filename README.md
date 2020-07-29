@@ -7,11 +7,11 @@ There are 2 main features of the tool.
 ```c++
 #require MOD mi
 #require INF N kmp
-#require love
+#require lcm
 ```
 2. #author x y x ... (add that line as a comment on the top of the code. Just a cute little feature :p).You can write these lines arbitary number of times, anywhere in code.
 ```c++
-#author I dont give no f*ck what you write here, it is just an example
+#author I dont care what you write here, it is just an example
 #author This problem seems hard, then it doesn't, but it really is. 
 #author awesome video :) (https://www.youtube.com/watch?v=M64HUIJFTZM) 
 ```
