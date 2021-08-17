@@ -1,1 +1,2 @@
-const int mod = 1e9 + 7;
+#require ll
+const ll MOD = 1e9 + 7;

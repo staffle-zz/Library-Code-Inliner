@@ -1,1 +1,2 @@
-const int inf = 2e9;
+#require ll
+const ll INF = 2e18;
