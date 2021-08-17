@@ -1,5 +1,6 @@
 {
-	"shell_cmd": "./Build/tool < \"${file}\" > submit.cpp && g++ -o run submit.cpp -Wall -std=c++17 && ./run < io/in > io/out",
-	"file_regex": "^(...*?):([0-9]*):?([0-9]*)",
-	"file_patterns": ["*.template"]
+    "shell_cmd": "Build\\tool.exe < \"${file}\" > intermediate.cpp && g++ -o run intermediate.cpp -Wall -std=c++17 && run.exe < io\\in > io\\out && del run.exe  && Build\\final.exe < main.template && Build\\dbgrm.exe < submit.cpp > Submission/final_submit.cpp",
+    "file_regex": "^(...*?):([0-9]*):?([0-9]*)",
+    "file_patterns": ["*.template"],
+    "working_dir": "${file_path}"
 }

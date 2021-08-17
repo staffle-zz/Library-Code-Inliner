@@ -1,0 +1,35 @@
+<snippet>
+	<description>Fenwick tree</description>
+	<content><![CDATA[struct Fenwick{
+	int N;
+	vector<${1:int}> v;
+	Fenwick(int n){N = n;v={0};}
+	Fenwick(const vector<$1> &a):Fenwick(a.size()+1){
+		v.insert(v.end(), a.begin(),a.end());
+		for(int i=1;i<N;i++){
+			int p = i + lsb(i);
+			if(p < v.size())v[p] += v[i];
+		}
+	}
+	void add(int i,$1 val){
+		while(i<v.size()){
+			v[i] += val;
+			i += lsb(i);
+		}
+	}
+	$1 sum(int i){
+		$1 sm = 0 ;
+		while(i){
+			sm += v[i];
+			i &= ~lsb(i);
+		}
+		return sm;
+	}
+	$1 lsb(int i){return i&-i;}
+	$1 sum(int l,int r){return sum(r)-sum(l-1);} 
+	$1 get(int i){return v[i];}
+	void set(int i,$1 val){add(i,val-v[i]);}
+};]]></content>
+	<tabTrigger>fenwick</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

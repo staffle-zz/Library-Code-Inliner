@@ -1,0 +1,48 @@
+<snippet>
+	<description>segment tree</description>
+	<content><![CDATA[class SegmentTree {
+private:
+	int n, ql, qr;
+	vector<int> t;
+	int sum(int i, int l, int r) {
+		if (l > qr || r < ql)return 0;
+		if (l >= ql && r <= qr)return t[i];
+		return sum(i << 1, l, (l + r) >> 1) + sum((i << 1) + 1, ((l + r) >> 1) + 1 , r);
+	}
+	void build (const vector<int>& a, int v, int tl , int tr) {
+		if (tl == tr)t[v] = a[tl];
+		else {
+			int tm = (tl + tr) >> 1;
+			build(a, v << 1, tl, tm);
+			build(a, (v << 1) + 1, tm + 1, tr);
+			t[v] = t[v << 1] + t[(v << 1) + 1];
+		}
+	}
+	void update(int i, int l, int r) {
+		if (ql > r || ql < l)return ;
+		if (ql == l && ql == r) {t[i] = qr; return;}
+		update(i <<1, l, (l + r) >>1);
+		update((i <<1) + 1, ((l + r) >>1) + 1, r);
+		t[i] = t[i <<1] + t[(i <<1) + 1];
+	}
+public:
+	SegmentTree(int n) {
+		this->n = n;
+		t.resize(n << 2);
+	};
+	int sum(int l, int r) {
+		ql = l;
+		qr = r;
+		return sum(1, 0, n - 1);
+	}
+	void build(const vector<int> &a) {
+		build(a, 1, 0, n - 1);
+	}
+	void update(int pos , int val){
+		ql = pos;
+		qr = val;
+	}
+};]]></content>
+	<tabTrigger>segTree</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

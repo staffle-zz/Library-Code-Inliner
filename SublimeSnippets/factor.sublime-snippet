@@ -1,0 +1,23 @@
+<snippet>
+	<description>factors</description>
+	<content><![CDATA[vector<pair<int,int>> factor;
+void getfactor(int n){
+	int c=0;
+	while(!(n&1)){
+		c++;
+		n>>=1;
+	}
+	if(c)factor.push_back({2,c});
+	for (int i = 3; 1ll*i*i <= n; i+=2){
+		c=0;
+		while(n%i==0){
+			n/=i;
+			c++;
+		}
+		if(c)factor.push_back({i,c});
+	}
+	if(n>1)factor.push_back({n,1});
+}]]></content>
+	<tabTrigger>factor</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

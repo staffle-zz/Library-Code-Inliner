@@ -1,0 +1,28 @@
+<snippet>
+	<description>matrix exponent</description>
+	<content><![CDATA[typedef long long ll;
+typedef vector<ll> vl;
+typedef vector<vl> vvl;
+const int mod= 1e9+7;
+vvl mul(const vvl &a,const vvl &b) {
+    vvl c(a.size(), vl(b[0].size()));
+    for (int i = 0; i < a.size(); ++i)
+        for (int j = 0; j < b[0].size(); ++j)
+            for (int k = 0; k < a[0].size(); ++k)
+                c[i][j] += a[i][k] * b[k][j]%mod,
+                c[i][j] %=mod;
+    return c;
+}
+vvl power(vvl &b,ll p){
+    vvl ret(b.size(),vl(b.size()));
+    for (int i = 0; i < b.size(); ++i)ret[i][i] = 1;
+    while(p){
+        if(p&1)ret = mul(ret,b);
+        b = mul(b,b);
+        p>>=1;
+    }
+    return ret;
+}]]></content>
+	<tabTrigger>matexp</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>
