@@ -1,0 +1,22 @@
+<snippet>
+    <description>adj list</description>
+    <content><![CDATA[
+//for(int i=head[u];~i;i=nxt[i])
+const int N = 2e5 + 10, M = 2 * N;
+int head[N], nxt[M], to[M],n,ne;
+void init() {
+    memset(head, -1, n * sizeof head[0]);
+    ne = 0;
+}
+void addEdge(int f, int t) {
+    to[ne] = t;
+    nxt[ne] = head[f];
+    head[f] = ne++;
+}
+void addBiEdge(int u, int v) {
+    addEdge(u, v);
+    addEdge(v, u);
+}]]></content>    
+    <tabTrigger>adj</tabTrigger>
+    <scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

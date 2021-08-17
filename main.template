@@ -1,17 +1,5 @@
-#author Author : amit_dwivedi
 #require ll macro
-#require lcm inf ckmin
-int main(){
-	ios_base::sync_with_stdio(false);cin.tie(NULL);
-	#author I can do this all day.
-	
-	int ans = inf , x;
-	cout << lcm(12,13) << endl;
-	int n; cin >> n;
-
-	for (int i = 0; i < n; ++i){
-		cin >> x;
-		ckmin(ans,x);
-	}
-	cout << ans << endl;
+int main() {
+    dbg("hi");
+    cout << "hello there i am amit kumar dwivedi and i want to say something" << endl;
 }

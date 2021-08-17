@@ -1,0 +1,18 @@
+<snippet>
+	<description>diameter</description>
+	<content><![CDATA[int diam;
+vector<int> v[N];
+int dfs(int i, int p) {
+    int depths[3] = {0, 0, 0};
+    for(int j: v[i])if(j!=p){
+        int dep = 1 + dfs(j, i);
+        depths[0] = dep;
+        sort(depths, depths + 3);
+    }
+    diam = max(diam, depths[1] + depths[2]);
+    return depths[2];
+}
+]]></content>
+	<tabTrigger>diameter</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

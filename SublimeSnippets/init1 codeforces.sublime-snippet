@@ -1,0 +1,28 @@
+<snippet>
+	<description>init codeforces</description>
+	<content><![CDATA[#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#pragma GCC target ("avx2")
+#pragma GCC optimization ("O3")
+#pragma GCC optimization ("unroll-loops")
+#define all(x) x.begin(), x.end()
+#define rall(x) x.rbegin(), x.rend()
+using namespace std;
+using namespace __gnu_pbds;
+typedef long long ll;
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
+const int N = 1e5 + 5;
+int main() {
+	${0:}
+}
+/* try tricky test cases:
+      -bounds
+      -integer overflow
+      -small input (0, 1)
+      -big input
+      -random tests
+*/
+]]></content>
+	<tabTrigger>ii</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

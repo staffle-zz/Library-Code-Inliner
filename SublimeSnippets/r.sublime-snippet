@@ -1,0 +1,8 @@
+<snippet>
+	<description>read</description>
+	<content><![CDATA[freopen("in.txt", "r", stdin);
+${0:}
+]]></content>
+	<tabTrigger>r</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

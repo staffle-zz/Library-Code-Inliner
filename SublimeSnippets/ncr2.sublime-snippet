@@ -1,0 +1,15 @@
+<snippet>
+	<description>ncr</description>
+	<content><![CDATA[ull ncr(int n, int r) {
+    ull ret = 1;
+    for (int i = r + 1; i <= n; ++i) {
+        ull d = (i - r);
+        ull q = ret / d;
+        ull rem = ret - (q * d);
+        ret = (q * i) + (rem * i) / d;
+    }
+    return ret;
+}]]></content>
+	<tabTrigger>ncr</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

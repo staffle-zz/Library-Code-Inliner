@@ -1,1 +1,1 @@
-const int N = 1000001;
+const int N = 3e5 + 10;

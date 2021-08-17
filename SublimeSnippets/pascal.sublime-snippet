@@ -1,0 +1,16 @@
+<snippet>
+	<description>ncr</description>
+	<content><![CDATA[typedef long long ll;
+const int N = 101;
+ll dp[N][N];
+//memset(dp,-1,sizeof(dp));
+ll ncr(int n, int r){
+    if(n == r || !r) return 1;
+    if(n < r) return 0;
+    ll &ret = dp[n][r];
+    if(~ret) return ret;
+    return ret = ncr(n - 1, r - 1) + ncr(n - 1, r);
+}]]></content>
+	<tabTrigger>pascal</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

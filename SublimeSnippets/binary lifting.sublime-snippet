@@ -1,0 +1,27 @@
+<snippet>
+	<description>binary lifting</description>
+	<content><![CDATA[int ln;
+vector<int> lvl;
+vector<vector<int>> dp,g;
+void dfs(int u,int p){
+	lvl[u] = lvl[p] +1;
+	dp[u][0] = p;
+	for(int i=1;i<ln;i++)
+		dp[u][i] = dp[dp[u][i-1]][i-1];
+	for (auto &i: g[u])
+		if(i!=p)dfs(i,u);
+}
+int lca (int u,int v){
+	if(lvl[u]<lvl[v])swap(u,v);
+	for(int i=0,d=lvl[u] - lvl[v];d;i++,d>>=1)
+		if(d&1) u = dp[u][i];
+	if(u == v)return u;
+	for(int i=ln-1;i>=0;i++)if(dp[u][i]!=dp[v][i]){
+		u = dp[u][i];
+		v = dp[v][i];
+	}
+	return dp[u][0];
+}]]></content>
+	<tabTrigger>lca</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

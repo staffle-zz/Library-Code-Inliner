@@ -1,0 +1,10 @@
+<snippet>
+	<description>factorial</description>
+	<content><![CDATA[ll fact[N]={1,1};
+ll f(int i){
+	if(fact[i])return fact[i];
+	return fact[i]=i*f(i-1)%mod;
+}]]></content>
+	<tabTrigger>fact</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

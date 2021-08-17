@@ -1,0 +1,184 @@
+<snippet>
+	<content><![CDATA[
+inline namespace Helpers {
+template <class T, class = void>
+struct is_iterable : false_type {};
+template <class T>
+struct is_iterable<T, void_t<decltype(begin(declval<T>())), decltype(end(declval<T>()))>> : true_type {};
+template <class T>
+constexpr bool is_iterable_v = is_iterable<T>::value;
+
+template <class T, class = void>
+struct is_readable : false_type {};
+template <class T>
+struct is_readable<T, typename std::enable_if_t<is_same_v<decltype(cin >> declval<T&>()), istream&>>> : true_type {};
+template <class T>
+constexpr bool is_readable_v = is_readable<T>::value;
+
+template <class T, class = void>
+struct is_printable : false_type {};
+template <class T>
+struct is_printable<T, typename std::enable_if_t<is_same_v<decltype(cout << declval<T>()), ostream&>>> : true_type {};
+template <class T>
+constexpr bool is_printable_v = is_printable<T>::value;
+}  // namespace Helpers
+
+inline namespace Input {
+template <class T>
+constexpr bool needs_input_v = !is_readable_v<T> && is_iterable_v<T>;
+template <class T, class... U>
+void re(T& t, U&... u);
+template <class T, class U>
+void re(pair<T, U>& p);
+
+template <class T>
+typename enable_if<is_readable_v<T>, void>::type re(T& x) {
+    cin >> x;
+}
+template <class T>
+void re(complex<T>& c) {
+    T a, b;
+    re(a, b);
+    c = {a, b};
+}
+template <class T>
+
+typename enable_if<needs_input_v<T>, void>::type re(T& i);
+template <class T, class U>
+void re(pair<T, U>& p) {
+    re(p.f, p.s);
+}
+template <class T>
+typename enable_if<needs_input_v<T>, void>::type re(T& i) {
+    for (auto& x : i) re(x);
+}
+template <class T, class... U>
+void re(T& t, U&... u) {
+    re(t);
+    re(u...);
+}
+void rv(size_t) {
+}
+template <class T, class... U>
+void rv(size_t N, vector<T>& t, U&... u);
+template <class... U>
+void rv(size_t, size_t N2, U&... u);
+template <class T, class... U>
+void rv(size_t N, vector<T>& t, U&... u) {
+    t.resize(N);
+    re(t);
+    rv(N, u...);
+}
+template <class... U>
+void rv(size_t, size_t N2, U&... u) {
+    rv(N2, u...);
+}
+
+#define ints(...)    \
+    int __VA_ARGS__; \
+    re(__VA_ARGS__);
+
+}  // namespace Input
+
+inline namespace ToString {
+template <class T>
+constexpr bool needs_output_v = !is_printable_v<T> && is_iterable_v<T>;
+
+template <class T>
+typename enable_if<is_printable_v<T>, string>::type ts(T v) {
+    stringstream ss;
+    ss << fixed << setprecision(15) << v;
+    return ss.str();
+}
+template <class T>
+string bit_vec(T t) {
+    string res = "{";
+    for (int i = 0; i < (int)t.size(); i++) res += ts(t[i]);
+    res += "}";
+    return res;
+}
+string ts(vector<bool> v) {
+    return bit_vec(v);
+}
+template <size_t SZ>
+string ts(bitset<SZ> b) {
+    return bit_vec(b);
+}
+template <class T, class U>
+string ts(pair<T, U> p);
+template <class T>
+typename enable_if<needs_output_v<T>, string>::type ts(T v);
+template <class T, class U>
+string ts(pair<T, U> p) {
+    return "(" + ts(p.f) + ", " + ts(p.s) + ")";
+}
+template <class T>
+typename enable_if<is_iterable_v<T>, string>::type ts_sep(T v, string sep) {
+    bool fst = 1;
+    string res = "";
+    for (const auto& x : v) {
+        if (!fst) res += sep;
+        fst = 0;
+        res += ts(x);
+    }
+    return res;
+}
+template <class T>
+typename enable_if<needs_output_v<T>, string>::type ts(T v) {
+    return "{" + ts_sep(v, ", ") + "}";
+}
+template <int, class T>
+typename enable_if<!needs_output_v<T>, vector<string>>::type ts_lev(const T& v) {
+    return {ts(v)};
+}
+template <int lev, class T>
+typename enable_if<needs_output_v<T>, vector<string>>::type ts_lev(const T& v) {
+    if (lev == 0 || !sz(v)) return {ts(v)};
+    vector<string> res;
+    for (const auto& t : v) {
+        if (res.size()) res.back() += ",";
+        vector<string> tmp = ts_lev<lev - 1>(t);
+        res.insert(end(res), tmp.begin(), tmp.end());
+    }
+    for (int i = 0; i < (int)res.size(); i++) {
+        string bef = " ";
+        if (i == 0) bef = "{";
+        res[i] = bef + res[i];
+    }
+    res.back() += "}";
+    return res;
+}
+}  // namespace ToString
+
+inline namespace Output {
+template <class T>
+void pr_sep(ostream& os, string, const T& t) {
+    os << ts(t);
+}
+template <class T, class... U>
+void pr_sep(ostream& os, string sep, const T& t, const U&... u) {
+    pr_sep(os, sep, t);
+    os << sep;
+    pr_sep(os, sep, u...);
+}
+template <class... T>
+void pr(const T&... t) {
+    pr_sep(cout, "", t...);
+}
+void ps() {
+    cout << "\n";
+}
+template <class... T>
+void ps(const T&... t) {
+    pr_sep(cout, " ", t...);
+    ps();
+}
+}  // namespace Output
+
+con
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>benqio</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

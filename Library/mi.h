@@ -38,8 +38,8 @@ struct mi {
     return pow(a, MOD - 2);
   }
   mi operator-() const { return mi(-v); }
-  mi& operator++() { return *this += 1; }
-  mi& operator--() { return *this -= 1; }
+  mi& operator++() { return * this += 1; }
+  mi& operator--() { return * this -= 1; }
   friend mi operator+(mi a, const mi& b) { return a += b; }
   friend mi operator-(mi a, const mi& b) { return a -= b; }
   friend mi operator*(mi a, const mi& b) { return a *= b; }
