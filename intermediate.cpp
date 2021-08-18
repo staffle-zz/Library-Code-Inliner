@@ -1,6 +1,6 @@
 /**
 * author  : amit_dwivedi
-* created : Tue Aug 17 21:03:29 2021
+* created : Tue Aug 17 21:51:26 2021
 **/
 #include "bits/stdc++.h"
 using namespace std;
@@ -16,5 +16,5 @@ using ll = long long;
 
 int main() {
     dbg("hi");
-    cout << "hello there i am amit kumar dwivedi and i want to say something" << endl;
+    cout << "hello world" << endl;
 }
