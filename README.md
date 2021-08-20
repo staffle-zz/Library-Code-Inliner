@@ -9,6 +9,7 @@ There are 2 main features of the tool.
 #require INF N kmp
 #require lcm
 ```
+======Removed======
 2. #author x y x ... (add that line as a comment on the top of the code. Just a cute little feature :p).You can write these lines arbitary number of times, anywhere in code.
 ```c++
 #author I dont care what you write here, it is just an example
