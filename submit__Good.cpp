@@ -17,28 +17,25 @@ using ll = long long;
 const int MOD = 7 + 1e9;
 const int N = 5 + 5e4;
 
-void solve() {
+bool solve() {
     int n, k;
-    string s;
-    cin >> n >> k >> s;
-    string ans(k, s[0]);
-
-    for (int len = 1; len <= n; len++) {
-        string temp;
-        for (int i = 0; i < k; i++) {
-            temp += s[i % len];
+    cin >> n >> k;
+    ll ans = MOD;
+    int found = 0 , cur = n;
+    while(1){
+        string S = to_string(cur);
+        set<char> s(all(S));
+        if(sz(s) <= k){
+            return cout << cur << endl , 0;
         }
-        if (temp < ans) {
-            ans = temp;
-        }
+        cur++;
     }
-    cout << ans << endl;
 }
 
 int main() {
     ios::sync_with_stdio(false), cin.tie(NULL);
     int Tests = 1;
-    // cin >> Tests;
+    cin >> Tests;
     while (Tests--)
         solve();
 }
